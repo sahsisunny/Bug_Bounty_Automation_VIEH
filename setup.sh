@@ -66,7 +66,7 @@ printf "############Installing Subdomain Finder Tools#######################\n"
 printf "####################################################################\n"
 
 # Subdomain Finder                                                     
-function InstallingSubwalker(){
+function InstallSubwalker(){
     printf "\n${BYellow}[-] Installing subwalker..............\n"
     cd ~/tools/
     git clone https://github.com/m8r0wn/subwalker
@@ -80,11 +80,11 @@ function InstallingSubwalker(){
 function installSubjs(){
     printf "\n${BYellow}[-] Installing subjs..............\n"
     go install https://github.com/lc/subjs@latest
-    sudo apt install subjs -Y
+    sudo apt install subjs -y
     printf "\n${BGreen}[+] Done\n"
 }
 
-# installing Dirsearch
+# installing dirsearch
 function installDirserach(){
     printf "\n${BYellow}[-] Installing dirsearch..............\n"
     cd ~/tools/
