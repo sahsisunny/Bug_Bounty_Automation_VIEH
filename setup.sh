@@ -7,6 +7,7 @@ White='\033[0;37m'        # White
 BYellow='\033[1;33m'      # Bold Yellow
 BGreen='\033[1;32m'       # Bold Green
 
+Color_Off='\033[0m'       # Text Reset
 
 function banner(){
 	printf "\n${BYellow}"
@@ -57,8 +58,10 @@ function installGo(){
 # Installing Github
 function installGithub(){
     printf "\n${BYellow}[-] Installing Github..............\n"
-    sudo apt install github -y
+    printf "${Color_Off}"
+    sudo apt install git -y
     printf "\n${BGreen}[+] Done\n"
+    printf "${Color_Off}"
 }
 
 printf "####################################################################\n"
@@ -68,19 +71,27 @@ printf "####################################################################\n"
 # Subdomain Finder                                                     
 function InstallSubwalker(){
     printf "\n${BYellow}[-] Installing subwalker..............\n"
+    printf "${Color_Off}"
     cd ~/tools/
     git clone https://github.com/m8r0wn/subwalker
     cd subwalker
     chmod +x install.sh subwalker.sh
     sudo ./install.sh
     printf "\n${BGreen}[+] Done\n"
+    printf "${Color_Off}"
 }
 
 # installing subjs
 function installSubjs(){
     printf "\n${BYellow}[-] Installing subjs..............\n"
-    go install https://github.com/lc/subjs@latest
-    sudo apt install subjs -y
+    mkdir temp
+    cd temp
+    wget https://github.com/lc/subjs/releases/download/v1.0.1/subjs_1.0.1_linux_amd64.tar.gz
+    tar xvf subjs_1.0.1_linux_amd64.tar.gz
+    mv subjs /usr/bin/subjs
+    rm subjs_1.0.1_linux_amd64.tar.gz
+    cd ../
+    sudo rm -rf temp
     printf "\n${BGreen}[+] Done\n"
 }
 
@@ -88,7 +99,7 @@ function installSubjs(){
 function installDirserach(){
     printf "\n${BYellow}[-] Installing dirsearch..............\n"
     cd ~/tools/
-    git clone https://github.com/maurosoria/dirsearch.git --depth 1
+    git clone https://github.com/maurosoria/dirsearch.git
     cd ~/tools/dirsearch
     pip install -r requirements.txt
     printf "\n${BGreen}[+] Done\n"
@@ -97,7 +108,7 @@ function installDirserach(){
 # Installing subjack
 function installSubjack(){
     printf "\n${BYellow}[-] Installing subjack..............\n"
-    go install https://github.com/haccer/subjack@latest
+    go install github.com/haccer/subjack@latest
     cd ~/tools/
     git clone  https://github.com/haccer/subjack
     cd ../
@@ -116,3 +127,10 @@ function installHttprobe(){
 # Run Functions
 clear
 banner
+# CreatingFolder
+# installGithub
+# InstallSubwalker
+# installHttprobe
+# installSubjs
+# installSubjack
+installDirserach
