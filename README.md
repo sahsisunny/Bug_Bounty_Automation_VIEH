@@ -11,7 +11,7 @@
   <a href="https://twitter.com/sahsisunny">
     <img src="https://img.shields.io/badge/twitter-%40SahsiSunny-blue">
   </a>
-   <a href="https://instagram/sahsisunny">
+   <a href="https://www.instagram.com/sahsisunny/">
     <img src="https://img.shields.io/badge/instagram-%40SahsiSunny-cyan">
   </a>
 </p>
