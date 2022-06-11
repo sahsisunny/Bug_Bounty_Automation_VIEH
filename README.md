@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH"><img src="https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH/src/banner.png" alt="xprobba"></a>
+  <a href="https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH"><img src="https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH/blob/main/src/banner.png" alt="xprobba"></a>
   <br>
   xProBBA
   <br>
