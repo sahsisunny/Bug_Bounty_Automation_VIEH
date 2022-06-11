@@ -41,8 +41,6 @@ The raw and cleaned dataset is uploaded in the ``` ./Data/``` folder and you can
 - git
 
 ## :mechanical_arm: Installation & Usage
-------------
-
 - `git clone https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH.git`
 - `cd Bug_Bounty_Automation_VIEH`
 - `chmod 777 *`
