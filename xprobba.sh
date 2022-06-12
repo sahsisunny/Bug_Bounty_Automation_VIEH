@@ -41,18 +41,34 @@ cd $url
 
 # Scanning MainDomain
 function NmapScanDomain(){
-    nmap -Pn --script vuln $url >> NmapCVE_$url.txt
-    nmap _a T4 $url >> NmapScanOS_$url.txt
+	
+    printf "\n${BYellow}[-] Top 100 Port Scanning through Nmap..............\n"
+    printf "${Color_Off}"
+    nmap -F $url -v >> NmapTop100Port_$url.txt
+    printf "\n${BGreen}[+] Done\n"
+
+
+    printf "\n${BYellow}[-] Host Scanning through Nmap ..............\n"
+    printf "${Color_Off}"
+    nmap -sn $url -v >> NmapHostScan_$url.txt
+    printf "\n${BGreen}[+] Done\n"
+
+    printf "\n${BYellow}[-] Scanning OS through Nmap..............\n"
+    printf "${Color_Off}"
+    nmap -O $url -v >> NmapScanOS_$url.txt 
+    printf "\n${BGreen}[+] Done\n"
 }
 
 # Scanning Subdomain
 function scanningSubdomains(){
 
     printf "\n${BYellow}[-] Scanning Subdomains through Sublist3r..............\n"
+    printf "${Color_Off}"
     python3 ~/tools/subwalker/tools/Sublist3r/sublist3r.py -d $url -o Subdomains.txt
     printf "\n${BGreen}[+] Done\n"
 
     printf "\n${BYellow}[-] Scanning Subdomains through assetfinder..............\n"
+    printf "${Color_Off}"
     ~/tools/subwalker/tools/assetfinder/assetfinder -subs-only $url >> Subdomains.txt
     printf "\n${BGreen}[+] Done\n"
 
@@ -61,6 +77,7 @@ function scanningSubdomains(){
 # Filtering and Sorting Subdomains
 function FilteringSubdomains(){
     printf "\n${BYellow}[-] Filtering and Sorting Subdomains.............\n"
+    printf "${Color_Off}"
     cat Subdomains.txt | sort | uniq > SubdomainsSorted.txt
     printf "\n${BGreen}[+] Done\n"
 
@@ -69,6 +86,7 @@ function FilteringSubdomains(){
 # Checking probe for working http and https servers.
 function CheckLive(){
     printf "\n${BYellow}[-] Checking probe for working http/https servers...............\n"
+    printf "${Color_Off}"
     cat SubdomainsSorted.txt | httprobe > aliveSubdomains.txt 
     printf "\n${BGreen}[+] Done\n"
 }
@@ -76,6 +94,7 @@ function CheckLive(){
 # Testing Live subdomains
 function testLive(){
     printf "\n${BYellow}[-] Testing Live subdomains..............\n"
+    printf "${Color_Off}"
     cat aliveSubdomains.txt | subjs > JsAliveSubdomains.txt
     printf "\n${BGreen}[+] Done\n"
 }
@@ -83,6 +102,7 @@ function testLive(){
 # Checking Takeover of Subdomains
 function checkTakeover(){
     printf "\n${BYellow}[-] Checking Takeover of Subdomains..............\n"
+    printf "${Color_Off}"
     subjack -w aliveSubdomains.txt -c ~/tools/subjack/fingerprints.json -t 25 -ssl -o DomainsTakeover.txt -v
     printf "\n${BGreen}[+] Done\n"
 }
@@ -91,8 +111,9 @@ function checkTakeover(){
 # Calling Function
 clear
 banner
-scanningSubdomains
-FilteringSubdomains
-CheckLive
-testLive
-checkTakeover
+NmapScanDomain
+# scanningSubdomains
+# FilteringSubdomains
+# CheckLive
+# testLive
+# checkTakeover

@@ -29,6 +29,7 @@ function banner(){
 # Folder Creating
 function CreatingFolder(){
     printf "\n${BYellow}[-] Creating Tools Folder..............\n"
+    printf "${Color_Off}"
     if [ ! -d ~/tools/ ]
     then
         mkdir ~/tools/
@@ -39,6 +40,7 @@ function CreatingFolder(){
 # Installing Go
 function installGo(){
     printf "\n${BYellow}[-] Installing Go-lang..............\n"
+    printf "${Color_Off}"
     wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
     sudo tar -xvf go1.13.4.linux-amd64.tar.gz
     sudo mv go /usr/local
@@ -58,7 +60,6 @@ function installGithub(){
     printf "${Color_Off}"
     sudo apt install git -y
     printf "\n${BGreen}[+] Done\n"
-    printf "${Color_Off}"
 }
 
 # Subdomain Finder                                                     
@@ -71,12 +72,12 @@ function InstallSubwalker(){
     chmod +x install.sh subwalker.sh
     sudo ./install.sh
     printf "\n${BGreen}[+] Done\n"
-    printf "${Color_Off}"
 }
 
 # installing subjs
 function installSubjs(){
     printf "\n${BYellow}[-] Installing subjs..............\n"
+    printf "${Color_Off}"
     mkdir temp
     cd temp
     wget https://github.com/lc/subjs/releases/download/v1.0.1/subjs_1.0.1_linux_amd64.tar.gz
@@ -91,6 +92,7 @@ function installSubjs(){
 # installing dirsearch
 function installDirserach(){
     printf "\n${BYellow}[-] Installing dirsearch..............\n"
+    printf "${Color_Off}"
     cd ~/tools/
     git clone https://github.com/maurosoria/dirsearch.git
     cd ~/tools/dirsearch
@@ -101,6 +103,7 @@ function installDirserach(){
 # Installing subjack
 function installSubjack(){
     printf "\n${BYellow}[-] Installing subjack..............\n"
+    printf "${Color_Off}"
     go install github.com/haccer/subjack@latest
     cd ~/tools/
     git clone  https://github.com/haccer/subjack
@@ -112,17 +115,47 @@ function installSubjack(){
 # Installing httprobe
 function installHttprobe(){
     printf "\n${BYellow}[-] Installing httprobe..............\n"
+    printf "${Color_Off}"
     go install https://github.com/tomnomnom/httprobe@latest
     sudo apt install httprobe -y
     printf "\n${BGreen}[+] Done\n"
 }
+# installing Rustscan
+function installRustScan(){
+    printf "\n${BYellow}[-] Installing Rustscan..............\n"
+    printf "${Color_Off}"
+    wget https://github.com/RustScan/RustScan/releases/download/2.0.1/rustscan_2.0.1_amd64.deb
+    dpkg -i rustscan_2.0.1_amd64.deb
+    rm rustscan_2.0.1_amd64.deb
+    printf "\n${BGreen}[+] Done\n"
+}
+# installing Nmap
+function installNmap(){
+    printf "\n${BYellow}[-] Installing Nmap..............\n"
+    printf "${Color_Off}"
+    sudo apt install Nmap -y
+    printf "\n${BGreen}[+] Done\n"
+}
+
+# installing gobuster
+function installGobuster(){
+    printf "\n${BYellow}[-] Installing Nmap..............\n"
+    printf "${Color_Off}"
+    go install github.com/OJ/gobuster/v3@latest
+    sudo apt install gobuster -y
+    printf "\n${BGreen}[+] Done\n"
+}
+
 
 # Run Functions
 clear
 banner
 CreatingFolder
+installNmap
+installRustScan
 installGithub
 InstallSubwalker
 installHttprobe
 installSubjs
 installSubjack
+installGobuster
