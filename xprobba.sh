@@ -40,22 +40,16 @@ fi
 cd $url
 
 # Scanning MainDomain
-function NmapScanDomain(){
+function ScanRustscan(){
 	
-    printf "\n${BYellow}[-] Top 100 Port Scanning through Nmap..............\n"
+    printf "\n${BYellow}[-] Host Scanning through Rustscan ..............\n"
     printf "${Color_Off}"
-    nmap -F $url -v >> NmapTop100Port_$url.txt
+    rustscan -a $url > RustscanHost_$url.txt
     printf "\n${BGreen}[+] Done\n"
 
-
-    printf "\n${BYellow}[-] Host Scanning through Nmap ..............\n"
+    printf "\n${BYellow}[-] Scanning OS through Rustscan..............\n"
     printf "${Color_Off}"
-    nmap -sn $url -v >> NmapHostScan_$url.txt
-    printf "\n${BGreen}[+] Done\n"
-
-    printf "\n${BYellow}[-] Scanning OS through Nmap..............\n"
-    printf "${Color_Off}"
-    nmap -O $url -v >> NmapScanOS_$url.txt 
+    rustscan -a $url -- -A -O > RustscanOS_$url.txt 
     printf "\n${BGreen}[+] Done\n"
 }
 
@@ -111,7 +105,8 @@ function checkTakeover(){
 # Calling Function
 clear
 banner
-NmapScanDomain
+
+ScanRustscan
 # scanningSubdomains
 # FilteringSubdomains
 # CheckLive
