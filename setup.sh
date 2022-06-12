@@ -25,9 +25,6 @@ function banner(){
     printf "+------------------------------------------------------------+\n"       
 }
 
-printf "####################################################################\n"
-printf "########################Installing Tools############################\n"
-printf "####################################################################\n"
 
 # Folder Creating
 function CreatingFolder(){
@@ -63,10 +60,6 @@ function installGithub(){
     printf "\n${BGreen}[+] Done\n"
     printf "${Color_Off}"
 }
-
-printf "####################################################################\n"
-printf "############Installing Subdomain Finder Tools#######################\n"
-printf "####################################################################\n"
 
 # Subdomain Finder                                                     
 function InstallSubwalker(){
@@ -127,10 +120,9 @@ function installHttprobe(){
 # Run Functions
 clear
 banner
-# CreatingFolder
-# installGithub
-# InstallSubwalker
-# installHttprobe
-# installSubjs
-# installSubjack
-installDirserach
+CreatingFolder
+installGithub
+InstallSubwalker
+installHttprobe
+installSubjs
+installSubjack

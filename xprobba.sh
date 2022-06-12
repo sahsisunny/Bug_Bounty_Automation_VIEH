@@ -39,6 +39,12 @@ fi
 
 cd $url
 
+# Scanning MainDomain
+function NmapScanDomain(){
+    nmap -Pn --script vuln $url >> NmapCVE_$url.txt
+    nmap _a T4 $url >> NmapScanOS_$url.txt
+}
+
 # Scanning Subdomain
 function scanningSubdomains(){
 
@@ -81,37 +87,12 @@ function checkTakeover(){
     printf "\n${BGreen}[+] Done\n"
 }
 
-# Directory Fuzzing
-function DirFuzzing(){
-    printf "\n${BYellow}[-] Directory Fuzzing..............\n"
-    
-    j=`wc -l < aliveSubdomains.txt`
-    i=1
-
-
-    if [ ! -d "dir_fuzz" ];then
-	mkdir dir_fuzz
-    fi
-   
-    while read -r line || i<=j
-    do    
-        python3 ~/tools/dirsearch/dirsearch.py -u $line -o dir_fuzzing_$i.txt
-        i=$(( i + 1 ))
-    done < aliveSubdomains.txt
-
-    $url/dir_fuzz && mv dir_fuzzing_(*).txt dir_fuzz
-
-
-    printf "\n${BGreen}[+] Done\n"
-
-}
 
 # Calling Function
 clear
 banner
-# scanningSubdomains
-# FilteringSubdomains
-# CheckLive
-# testLive
-# checkTakeover
-DirFuzzing
+scanningSubdomains
+FilteringSubdomains
+CheckLive
+testLive
+checkTakeover
