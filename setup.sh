@@ -133,13 +133,13 @@ function installRustScan(){
 function installNmap(){
     printf "\n${BYellow}[-] Installing Nmap..............\n"
     printf "${Color_Off}"
-    sudo apt install Nmap -y
+    sudo apt install nmap -y
     printf "\n${BGreen}[+] Done\n"
 }
 
 # installing gobuster
 function installGobuster(){
-    printf "\n${BYellow}[-] Installing Nmap..............\n"
+    printf "\n${BYellow}[-] Installing Gubuster..............\n"
     printf "${Color_Off}"
     go install github.com/OJ/gobuster/v3@latest
     sudo apt install gobuster -y
