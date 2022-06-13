@@ -89,17 +89,6 @@ function installSubjs(){
     printf "\n${BGreen}[+] Done\n"
 }
 
-# installing dirsearch
-function installDirserach(){
-    printf "\n${BYellow}[-] Installing dirsearch..............\n"
-    printf "${Color_Off}"
-    cd ~/tools/
-    git clone https://github.com/maurosoria/dirsearch.git
-    cd ~/tools/dirsearch
-    pip install -r requirements.txt
-    printf "\n${BGreen}[+] Done\n"
-}
-
 # Installing subjack
 function installSubjack(){
     printf "\n${BYellow}[-] Installing subjack..............\n"
