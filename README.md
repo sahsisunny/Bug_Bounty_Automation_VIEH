@@ -44,6 +44,16 @@ The raw and cleaned dataset is uploaded in the ``` ./Data/``` folder and you can
 - [Cleaned Data](https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH)
 
 
+## :chains: Tools Used in this roject
+- [Go](https://golang.google.cn/doc/)
+- [Git](https://git-scm.com/doc)
+- [m8r0wn - Subwalker](https://github.com/m8r0wn/SubWalker)
+- [lc - subjs](https://github.com/lc/subjs)
+- [haccer - subjack](https://github.com/haccer/subjack)
+- [tomnomnom - httprobe](https://github.com/tomnomnom/httprobe)
+- [RustScan - RustScan](https://github.com/RustScan/RustScan)
+- [nmap - nmap](https://github.com/nmap/nmap)
+- [OJ - gobuster](https://github.com/OJ/gobuster)
 
 ## <img src="https://raw.githubusercontent.com/TheDudeThatCode/TheDudeThatCode/master/Assets/Developer.gif" width=35 height=25> Contributors
-- :india: - Sunny Sahsi
+- :india: Sunny Sahsi
