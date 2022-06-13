@@ -45,8 +45,6 @@ The raw and cleaned dataset is uploaded in the ``` ./Data/``` folder and you can
 
 
 ## :chains: Tools Used in this roject
-- [Go](https://golang.google.cn/doc/)
-- [Git](https://git-scm.com/doc)
 - [m8r0wn - Subwalker](https://github.com/m8r0wn/SubWalker)
 - [lc - subjs](https://github.com/lc/subjs)
 - [haccer - subjack](https://github.com/haccer/subjack)
