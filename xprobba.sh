@@ -128,6 +128,70 @@ function DirFuzzing(){
 
 }
 
+# Listing Files - Output
+function listingFiles(){
+
+    rust=`ls RustscanHost_$url.txt`
+    nmp=`ls NmapScanOS_$url.txt`
+    subdo=`ls Subdomains.txt`
+    sortedsub=`ls SubdomainsSorted.txt`
+    whos=`ls Whois_$url.com`
+    alivesub=`ls aliveSubdomains.txt `
+    jsalivsub=`ls JsAliveSubdomains.txt`
+    takesub=`ls DomainsTakeover.txt`
+    
+
+    printf "${BGreen}\n"
+    printf "╔============================================================╗\n"
+    printf "║=======================Output Files=========================║\n"
+    printf "║============================================================╝\n"
+    printf "║====== ${Color_Off} 1. ${rust} ${BGreen} \n"
+    printf "║====== ${Color_Off} 2. ${nmp} ${BGreen}\n"
+    printf "║====== ${Color_Off} 3. ${subdo} ${BGreen}\n"
+    printf "║====== ${Color_Off} 4. ${sortedsub} ${BGreen}\n"
+    printf "║====== ${Color_Off} 5. ${whos} ${BGreen}\n"
+    printf "║====== ${Color_Off} 6. ${alivesub} ${BGreen}\n"
+    printf "║====== ${Color_Off} 7. ${jsalivsub} ${BGreen}\n"
+    printf "║====== ${Color_Off} 8. ${takesub} ${BGreen}\n"
+    printf "║============================================================╗\n"
+    printf "║===============Directory Fuzzing Output Files===============║\n"
+    printf "║============================================================╝\n"
+
+
+    cd dir_fuzzing
+    ls -l | awk '{ print $9 }' > temp.txt
+    tail -n +2 temp.txt > tmp.txt && mv tmp.txt temp.txt
+    lnum=`wc -l < temp.txt`
+    i=1
+
+    while read -r line || i<=$lnum
+    do
+        printf "║====== ${Color_Off} $i. ${line}.txt ${BGreen}\n"
+        i=$(( i + 1 ))
+
+    done < temp.txt
+
+    rm temp.txt
+
+    printf "╚============================================================+\n"
+
+}
+
+# For Output Questions
+function needOutput(){
+    read -p "Do you want to open output in GUI Mode?(Yes/No): " ans 
+    if [ $ans == "yes" ] || [ $ans == "Yes" ] || [ $ans == "y" ] || [ $ans == "Y" ] || [ $ans == "YES" ]
+    then
+        xdg-open ./
+    elif [ $ans == "no" ] || [ $ans == "No" ] || [ $ans == "n" ] || [ $ans == "N" ] || [ $ans == "NO" ]
+    then
+        clear
+        banner
+        listingFiles
+    else
+        echo "Please enter valid answer!!"
+    fi
+}
 
 # Calling Function
 clear
@@ -140,3 +204,4 @@ CheckLive
 testLive
 checkTakeover
 DirFuzzing
+needOutput
