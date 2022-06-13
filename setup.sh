@@ -89,6 +89,17 @@ function installSubjs(){
     printf "\n${BGreen}[+] Done\n"
 }
 
+# installing dirsearch
+function installDirserach(){
+    printf "\n${BYellow}[-] Installing dirsearch..............\n"
+    printf "${Color_Off}"
+    cd ~/tools/
+    git clone https://github.com/maurosoria/dirsearch.git
+    cd ~/tools/dirsearch
+    pip install -r requirements.txt
+    printf "\n${BGreen}[+] Done\n"
+}
+
 # Installing subjack
 function installSubjack(){
     printf "\n${BYellow}[-] Installing subjack..............\n"
@@ -144,6 +155,16 @@ function copyWordlist(){
     printf "\n${BGreen}[+] Done\n"
 }
 
+#Installing whois
+function installWhois(){
+    printf "\n${BYellow}[-] Installing whois.............\n"
+    printf "${Color_Off}"
+
+    sudo apt install whois -y
+
+    printf "\n${BGreen}[+] Done\n"
+}
+
 
 # Run Functions
 clear
@@ -158,3 +179,4 @@ installSubjs
 installSubjack
 installGobuster
 copyWordlist
+installWhois

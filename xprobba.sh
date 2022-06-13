@@ -47,9 +47,9 @@ function ScanRustscan(){
     rustscan -a $url > RustscanHost_$url.txt
     printf "\n${BGreen}[+] Done\n"
 
-    printf "\n${BYellow}[-] Scanning OS through Rustscan..............\n"
+    printf "\n${BYellow}[-] Scanning OS through Nmap..............\n"
     printf "${Color_Off}"
-    rustscan -a $url -- -A -O > RustscanOS_$url.txt 
+    nmap -O $url > NmapScanOS_$url.txt 
     printf "\n${BGreen}[+] Done\n"
 }
 
@@ -73,6 +73,15 @@ function FilteringSubdomains(){
     printf "\n${BYellow}[-] Filtering and Sorting Subdomains.............\n"
     printf "${Color_Off}"
     cat Subdomains.txt | sort | uniq > SubdomainsSorted.txt
+    printf "\n${BGreen}[+] Done\n"
+
+}
+
+# Gathering Whois information
+function gatherWhois(){
+    printf "\n${BYellow}[-] Filtering and Sorting Subdomains.............\n"
+    printf "${Color_Off}"
+    whois $url > Whois_$url.com
     printf "\n${BGreen}[+] Done\n"
 
 }
@@ -123,10 +132,11 @@ function DirFuzzing(){
 # Calling Function
 clear
 banner
-# ScanRustscan
-# scanningSubdomains
-# FilteringSubdomains
-# CheckLive
-# testLive
-# checkTakeover
-# DirFuzzing
+ScanRustscan
+gatherWhois
+scanningSubdomains
+FilteringSubdomains
+CheckLive
+testLive
+checkTakeover
+DirFuzzing
