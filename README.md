@@ -29,7 +29,7 @@
 - git
 
 ## :mechanical_arm: Installation & Usage
-- `git clone https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH.git`
+- `git clone https://github.com/sahsisunny/xProBBA.git`
 - `cd xProBBA`
 - `chmod 777 *`
 - `./setup.sh`
