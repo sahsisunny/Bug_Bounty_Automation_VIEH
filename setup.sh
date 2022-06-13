@@ -145,17 +145,27 @@ function installGobuster(){
     sudo apt install gobuster -y
     printf "\n${BGreen}[+] Done\n"
 }
+# Copy Wordlists
+function copyWordlist(){
+    printf "\n${BYellow}[-] Copying wordlist files..............\n"
+    printf "${Color_Off}"
+
+    mv wordlist ~/tools/
+
+    printf "\n${BGreen}[+] Done\n"
+}
 
 
 # Run Functions
 clear
 banner
 CreatingFolder
+installGithub
 installNmap
 installRustScan
-installGithub
 InstallSubwalker
 installHttprobe
 installSubjs
 installSubjack
 installGobuster
+copyWordlist

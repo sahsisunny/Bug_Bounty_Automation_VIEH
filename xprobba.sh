@@ -101,14 +101,32 @@ function checkTakeover(){
     printf "\n${BGreen}[+] Done\n"
 }
 
+# Directory Fuzzing
+function DirFuzzing(){
+    printf "\n${BYellow}[-] Directory Fuzzing..............\n"
+    i=`wc -l < aliveSubdomains.txt`
+    while read -r line
+    do
+        if [ ! -d "dir_fuzzing" ];then
+            mkdir dir_fuzzing
+        fi
+
+        gobuster dir -u $line -w ~/tools/wordlist/wordlist.txt -o dir_fuzzing/$(echo $line | sed 's/https\?:\/\///')
+        $i=$i+1
+    done < aliveSubdomains.txt
+
+    printf "\n${BGreen}[+] Done\n"
+
+}
+
 
 # Calling Function
 clear
 banner
-
-ScanRustscan
+# ScanRustscan
 # scanningSubdomains
 # FilteringSubdomains
 # CheckLive
 # testLive
 # checkTakeover
+# DirFuzzing
