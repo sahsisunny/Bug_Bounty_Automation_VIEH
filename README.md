@@ -30,7 +30,7 @@
 
 ## :mechanical_arm: Installation & Usage
 - `git clone https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH.git`
-- `cd Bug_Bounty_Automation_VIEH`
+- `cd xProBBA
 - `chmod 777 *`
 - `./setup.sh`
 - `./xprobba.sh {DOMAIN_NAME}`
