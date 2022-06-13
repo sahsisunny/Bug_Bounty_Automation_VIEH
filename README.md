@@ -27,6 +27,7 @@
 - Python 3.10+
 - go
 - git
+- root user
 
 ## :mechanical_arm: Installation & Usage
 - `git clone https://github.com/sahsisunny/xProBBA.git`
