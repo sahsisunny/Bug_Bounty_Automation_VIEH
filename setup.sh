@@ -158,6 +158,7 @@ clear
 banner
 CreatingFolder
 installGithub
+installGo
 installNmap
 installRustScan
 installHttprobe
