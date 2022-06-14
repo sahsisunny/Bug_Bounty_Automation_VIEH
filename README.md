@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH"><img src="https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH/blob/main/src/banner.png" alt="xprobba"></a>
+  <a href="https://github.com/sahsisunny/xProBBA"><img src="https://github.com/sahsisunny/xProBBA/blob/main/src/banner.png" alt="xprobba"></a>
   <br>
   xProBBA
   <br>
@@ -18,10 +18,10 @@
 
 ## :open_file_folder:  Bug Bounty Automation
 - It is the collection of pentesting tools.
-- Extract tweets using Twitter Advance Search Query.
-- Extract Flipkart Mobile Data using Price Filter.
+- It's scan the target and generates the reports in text format.
+- root user is necessary to used this tool.
 
-## :memo: Decription
+<!-- ## :memo: Decription -->
 
 ## :hammer_and_wrench: Requirements
 - Python 3.10+
@@ -42,7 +42,7 @@
 
 ## :hourglass_flowing_sand: Dataset
 The raw and cleaned dataset is uploaded in the ``` ./Data/``` folder and you can download the files from below link too.
-- [Cleaned Data](https://github.com/sahsisunny/Bug_Bounty_Automation_VIEH)
+- [Cleaned Data](https://github.com/sahsisunny/xprobba)
 
 
 ## :chains: Tools Used in this roject
