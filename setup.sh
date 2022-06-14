@@ -140,6 +140,7 @@ function copyWordlist(){
     printf "\n${BYellow}[-] Copying wordlist files..............\n"
     printf "${Color_Off}"
     mv wordlist ~/tools/
+    printf "${Color_Off} Copying................................"
     printf "\n${BGreen}[+] Done\n"
 }
 
@@ -159,10 +160,10 @@ CreatingFolder
 installGithub
 installNmap
 installRustScan
-InstallSubwalker
 installHttprobe
 installSubjs
 installSubjack
 installGobuster
 copyWordlist
 installWhois
+InstallSubwalker
