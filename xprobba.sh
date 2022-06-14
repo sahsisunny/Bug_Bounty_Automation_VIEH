@@ -36,7 +36,6 @@ if [ ! -d "$url" ];then
     printf "\n${BGreen}[+] Done\n"
 fi
 
-
 cd $url
 
 # Scanning MainDomain

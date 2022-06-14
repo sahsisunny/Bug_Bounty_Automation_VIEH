@@ -71,6 +71,7 @@ function InstallSubwalker(){
     cd subwalker
     chmod +x install.sh subwalker.sh
     sudo ./install.sh
+    cd -
     printf "\n${BGreen}[+] Done\n"
 }
 
@@ -89,17 +90,6 @@ function installSubjs(){
     printf "\n${BGreen}[+] Done\n"
 }
 
-# installing dirsearch
-function installDirserach(){
-    printf "\n${BYellow}[-] Installing dirsearch..............\n"
-    printf "${Color_Off}"
-    cd ~/tools/
-    git clone https://github.com/maurosoria/dirsearch.git
-    cd ~/tools/dirsearch
-    pip install -r requirements.txt
-    printf "\n${BGreen}[+] Done\n"
-}
-
 # Installing subjack
 function installSubjack(){
     printf "\n${BYellow}[-] Installing subjack..............\n"
@@ -107,7 +97,7 @@ function installSubjack(){
     go install github.com/haccer/subjack@latest
     cd ~/tools/
     git clone  https://github.com/haccer/subjack
-    cd ../
+    cd -
     sudo apt install subjack -y
     printf "\n${BGreen}[+] Done\n"
 }
@@ -149,9 +139,7 @@ function installGobuster(){
 function copyWordlist(){
     printf "\n${BYellow}[-] Copying wordlist files..............\n"
     printf "${Color_Off}"
-
     mv wordlist ~/tools/
-
     printf "\n${BGreen}[+] Done\n"
 }
 
@@ -159,9 +147,7 @@ function copyWordlist(){
 function installWhois(){
     printf "\n${BYellow}[-] Installing whois.............\n"
     printf "${Color_Off}"
-
     sudo apt install whois -y
-
     printf "\n${BGreen}[+] Done\n"
 }
 
