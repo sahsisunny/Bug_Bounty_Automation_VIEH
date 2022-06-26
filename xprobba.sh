@@ -22,18 +22,8 @@ function banner(){
     printf "${White} ╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝    ${White} ╚═════╝ ╚═════╝ ╚═╝  ╚═╝ \n"
     printf "${BYellow}"
     printf "+------------------------------------------------------------+\n"
-<<<<<<< HEAD
-<<<<<<< HEAD
-	printf " Version - 0.1.1                              By:- @SahsiSunny\n"
+	printf " Version - 1.0.1                              By:- @SahsiSunny\n"
     printf "+------------------------------------------------------------+\n"       
-=======
-    printf " Version - 1.0.1                              By:- @SahsiSunny\n"
-    printf "+------------------------------------------------------------+\n"
->>>>>>> parent of 37b96c8 (Update xprobba.sh)
-=======
-	printf " Version - 0.1.1                              By:- @SahsiSunny\n"
-    printf "+------------------------------------------------------------+\n"       
->>>>>>> parent of b66ef2d (Update xprobba.sh)
 }
 
 # Creating Folder
@@ -124,7 +114,7 @@ function DirFuzzing(){
             mkdir dir_fuzzing
         fi
 
-        gobuster dir -u $line -w ~/tools/wordlist/wordlist.txt -o dir_fuzzing/$(echo $line | sed 's/https\?:\/\///')
+        gobuster dir -u $line -w ~/tools/wordlist/wordlist.txt -b 404,301 -t  -o dir_fuzzing/$(echo $line | sed 's/https\?:\/\///').txt
         $i=$i+1
     done < aliveSubdomains.txt
 
@@ -158,17 +148,8 @@ function listingFiles(){
     printf "║============================================================╗\n"
     printf "║===============Directory Fuzzing Output Files===============║\n"
     printf "║============================================================╝\n"
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 
-=======
-    
->>>>>>> parent of 37b96c8 (Update xprobba.sh)
-=======
-
-
->>>>>>> parent of b66ef2d (Update xprobba.sh)
     cd dir_fuzzing
     ls -l | awk '{ print $9 }' > temp.txt
     tail -n +2 temp.txt > tmp.txt && mv tmp.txt temp.txt
@@ -179,15 +160,6 @@ function listingFiles(){
     do
         printf "║====== ${Color_Off} $i. ${line}.txt ${BGreen}\n"
         i=$(( i + 1 ))
-<<<<<<< HEAD
-        
-    done < temp.txt
-    
-    rm temp.txt
-    
-    printf "╚============================================================+\n"
-
-=======
 
     done < temp.txt
 
@@ -195,7 +167,6 @@ function listingFiles(){
 
     printf "╚============================================================+\n"
 
->>>>>>> parent of b66ef2d (Update xprobba.sh)
 }
 
 # For Output Questions
