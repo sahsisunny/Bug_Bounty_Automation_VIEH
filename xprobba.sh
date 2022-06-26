@@ -22,13 +22,8 @@ function banner(){
     printf "${White} ╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝    ${White} ╚═════╝ ╚═════╝ ╚═╝  ╚═╝ \n"
     printf "${BYellow}"
     printf "+------------------------------------------------------------+\n"
-<<<<<<< HEAD
 	printf " Version - 0.1.1                              By:- @SahsiSunny\n"
     printf "+------------------------------------------------------------+\n"       
-=======
-    printf " Version - 1.0.1                              By:- @SahsiSunny\n"
-    printf "+------------------------------------------------------------+\n"
->>>>>>> parent of 37b96c8 (Update xprobba.sh)
 }
 
 # Creating Folder
@@ -153,12 +148,8 @@ function listingFiles(){
     printf "║============================================================╗\n"
     printf "║===============Directory Fuzzing Output Files===============║\n"
     printf "║============================================================╝\n"
-<<<<<<< HEAD
 
 
-=======
-    
->>>>>>> parent of 37b96c8 (Update xprobba.sh)
     cd dir_fuzzing
     ls -l | awk '{ print $9 }' > temp.txt
     tail -n +2 temp.txt > tmp.txt && mv tmp.txt temp.txt
@@ -189,24 +180,6 @@ function needOutput(){
         clear
         banner
         listingFiles
-<<<<<<< HEAD
-=======
-        outputDirFuzz
-    else
-        echo "Please enter valid answer!!"
-    fi
-}
-
-# For need directory fuzzing
-function needDirFuzzing(){
-    read -p "Do you want scanning the directory of subdomains (it takes a lot of time)?(Yes/No): " ans
-    if [ $ans == "yes" ] || [ $ans == "Yes" ] || [ $ans == "y" ] || [ $ans == "Y" ] || [ $ans == "YES" ]
-    then
-        xdg-open ./
-    elif [ $ans == "no" ] || [ $ans == "No" ] || [ $ans == "n" ] || [ $ans == "N" ] || [ $ans == "NO" ]
-    then
-        DirFuzzing
->>>>>>> parent of 37b96c8 (Update xprobba.sh)
     else
         echo "Please enter valid answer!!"
     fi
