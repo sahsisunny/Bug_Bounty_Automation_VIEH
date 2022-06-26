@@ -153,7 +153,6 @@ function listingFiles(){
 function outputDirFuzz(){
     if [ ! -d /$url/dir_fuzzing ];then
         outDirFuzz
-
     fi
 }
 # Directoru Fuzzing output
