@@ -22,7 +22,7 @@ function banner(){
     printf "${White} ╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝    ${White} ╚═════╝ ╚═════╝ ╚═╝  ╚═╝ \n"
     printf "${BYellow}"
     printf "+------------------------------------------------------------+\n"
-	printf " Version - 1.0.1                              By:- @SahsiSunny\n"
+	printf " Version - 0.1.1                              By:- @SahsiSunny\n"
     printf "+------------------------------------------------------------+\n"       
 }
 
@@ -145,20 +145,10 @@ function listingFiles(){
     printf "║====== ${Color_Off} 5. ${alivesub} ${BGreen}\n"
     printf "║====== ${Color_Off} 6. ${jsalivsub} ${BGreen}\n"
     printf "║====== ${Color_Off} 7. ${takesub} ${BGreen}\n"
-    printf "╚============================================================+\n"
-}
-
-# Directoru Fuzzing output
-function outputDirFuzz(){
-    if [ ! -d "dir_fuzzing" ];then
-        outDirFuzz
-    fi
-}
-# Directoru Fuzzing output
-function outDirFuzz(){
     printf "║============================================================╗\n"
     printf "║===============Directory Fuzzing Output Files===============║\n"
     printf "║============================================================╝\n"
+
 
     cd dir_fuzzing
     ls -l | awk '{ print $9 }' > temp.txt
@@ -176,8 +166,8 @@ function outDirFuzz(){
     rm temp.txt
 
     printf "╚============================================================+\n"
-}
 
+}
 
 # For Output Questions
 function needOutput(){
@@ -190,21 +180,6 @@ function needOutput(){
         clear
         banner
         listingFiles
-        
-    else
-        echo "Please enter valid answer!!"
-    fi
-}
-
-# For need directory fuzzing
-function needDirFuzzing(){
-    read -p "Do you want scanning the directory of subdomains (it takes a lot of time)?(Yes/No): " ans 
-    if [ $ans == "yes" ] || [ $ans == "Yes" ] || [ $ans == "y" ] || [ $ans == "Y" ] || [ $ans == "YES" ]
-    then
-        xdg-open ./
-    elif [ $ans == "no" ] || [ $ans == "No" ] || [ $ans == "n" ] || [ $ans == "N" ] || [ $ans == "NO" ]
-    then
-        DirFuzzing
     else
         echo "Please enter valid answer!!"
     fi
@@ -220,5 +195,5 @@ FilteringSubdomains
 CheckLive
 testLive
 checkTakeover
-needDirFuzzing
+DirFuzzing
 needOutput
