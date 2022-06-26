@@ -114,7 +114,7 @@ function DirFuzzing(){
             mkdir dir_fuzzing
         fi
 
-        gobuster dir -u $line -w ~/tools/wordlist/wordlist.txt -b 404,301 -t  -o dir_fuzzing/$(echo $line | sed 's/https\?:\/\///').txt
+        gobuster dir -u $line -w ~/tools/wordlist/wordlist.txt -b 404,301 -t 20 -o dir_fuzzing/$(echo $line | sed 's/https\?:\/\///')
         $i=$i+1
     done < aliveSubdomains.txt
 
@@ -145,15 +145,27 @@ function listingFiles(){
     printf "║====== ${Color_Off} 5. ${alivesub} ${BGreen}\n"
     printf "║====== ${Color_Off} 6. ${jsalivsub} ${BGreen}\n"
     printf "║====== ${Color_Off} 7. ${takesub} ${BGreen}\n"
+    printf "║============================================================╝\n"
+}
+
+
+# Directoru Fuzzing output
+function outputDirFuzz(){
+    if [ ! -d /$url/dir_fuzzing ];then
+        outDirFuzz
+
+    fi
+}
+# Directoru Fuzzing output
+function outDirFuzz(){
     printf "║============================================================╗\n"
     printf "║===============Directory Fuzzing Output Files===============║\n"
     printf "║============================================================╝\n"
 
-
     cd dir_fuzzing
-    ls -l | awk '{ print $9 }' > temp.txt
-    tail -n +2 temp.txt > tmp.txt && mv tmp.txt temp.txt
-    lnum=`wc -l < temp.txt`
+    ls -l | awk '{ print $9 }' > .temp.txt
+    tail -n +2 .temp.txt > tmp.txt && mv tmp.txt .temp.txt
+    lnum=`wc -l < .temp.txt`
     i=1
 
     while read -r line || i<=$lnum
@@ -161,12 +173,25 @@ function listingFiles(){
         printf "║====== ${Color_Off} $i. ${line}.txt ${BGreen}\n"
         i=$(( i + 1 ))
 
-    done < temp.txt
+    done < .temp.txt
 
-    rm temp.txt
+    rm .temp.txt
 
     printf "╚============================================================+\n"
-
+}
+# For need directory fuzzing
+function needDirFuzzing(){
+    read -p "Do you want scanning the directory of subdomains (it takes a lot of time)?(Yes/No): " ans 
+    if [ $ans == "yes" ] || [ $ans == "Yes" ] || [ $ans == "y" ] || [ $ans == "Y" ] || [ $ans == "YES" ]
+    then
+        DirFuzzing
+    elif [ $ans == "no" ] || [ $ans == "No" ] || [ $ans == "n" ] || [ $ans == "N" ] || [ $ans == "NO" ]
+    then
+        needOutput
+        exit 0
+    else
+        echo "Please enter valid answer!!"
+    fi
 }
 
 # For Output Questions
@@ -180,6 +205,7 @@ function needOutput(){
         clear
         banner
         listingFiles
+        outputDirFuzz
     else
         echo "Please enter valid answer!!"
     fi
@@ -195,5 +221,5 @@ FilteringSubdomains
 CheckLive
 testLive
 checkTakeover
-DirFuzzing
+needDirFuzzing
 needOutput
