@@ -38,17 +38,12 @@ fi
 
 cd $url
 
-# Scanning MainDomain
-function ScanRustscan(){
-	
-    printf "\n${BYellow}[-] Host Scanning through Rustscan ..............\n"
-    printf "${Color_Off}"
-    rustscan -a $url > RustscanHost_$url.txt
-    printf "\n${BGreen}[+] Done\n"
+# Nmap Scanning MainDomain
+function ScanNmap(){
 
-    printf "\n${BYellow}[-] Scanning OS through Nmap..............\n"
+    printf "\n${BYellow}[-] Aggressive Scanning through Nmap..............\n"
     printf "${Color_Off}"
-    nmap -O $url > NmapScanOS_$url.txt 
+    nmap -A $url > NmapScan_$url.txt 
     printf "\n${BGreen}[+] Done\n"
 }
 
@@ -130,8 +125,7 @@ function DirFuzzing(){
 # Listing Files - Output
 function listingFiles(){
 
-    rust=`ls RustscanHost_$url.txt`
-    nmp=`ls NmapScanOS_$url.txt`
+    nmp=`ls NmapScan_$url.txt`
     subdo=`ls Subdomains.txt`
     sortedsub=`ls SubdomainsSorted.txt`
     whos=`ls Whois_$url.com`
@@ -144,14 +138,13 @@ function listingFiles(){
     printf "╔============================================================╗\n"
     printf "║=======================Output Files=========================║\n"
     printf "║============================================================╝\n"
-    printf "║====== ${Color_Off} 1. ${rust} ${BGreen} \n"
-    printf "║====== ${Color_Off} 2. ${nmp} ${BGreen}\n"
-    printf "║====== ${Color_Off} 3. ${subdo} ${BGreen}\n"
-    printf "║====== ${Color_Off} 4. ${sortedsub} ${BGreen}\n"
-    printf "║====== ${Color_Off} 5. ${whos} ${BGreen}\n"
-    printf "║====== ${Color_Off} 6. ${alivesub} ${BGreen}\n"
-    printf "║====== ${Color_Off} 7. ${jsalivsub} ${BGreen}\n"
-    printf "║====== ${Color_Off} 8. ${takesub} ${BGreen}\n"
+    printf "║====== ${Color_Off} 1. ${nmp} ${BGreen}\n"
+    printf "║====== ${Color_Off} 2. ${subdo} ${BGreen}\n"
+    printf "║====== ${Color_Off} 3. ${sortedsub} ${BGreen}\n"
+    printf "║====== ${Color_Off} 4. ${whos} ${BGreen}\n"
+    printf "║====== ${Color_Off} 5. ${alivesub} ${BGreen}\n"
+    printf "║====== ${Color_Off} 6. ${jsalivsub} ${BGreen}\n"
+    printf "║====== ${Color_Off} 7. ${takesub} ${BGreen}\n"
     printf "║============================================================╗\n"
     printf "║===============Directory Fuzzing Output Files===============║\n"
     printf "║============================================================╝\n"
@@ -195,7 +188,7 @@ function needOutput(){
 # Calling Function
 clear
 banner
-ScanRustscan
+ScanNmap
 gatherWhois
 scanningSubdomains
 FilteringSubdomains

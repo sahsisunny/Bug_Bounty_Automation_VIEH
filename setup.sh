@@ -110,15 +110,6 @@ function installHttprobe(){
     sudo apt install httprobe -y
     printf "\n${BGreen}[+] Done\n"
 }
-# installing Rustscan
-function installRustScan(){
-    printf "\n${BYellow}[-] Installing Rustscan..............\n"
-    printf "${Color_Off}"
-    wget https://github.com/RustScan/RustScan/releases/download/2.0.1/rustscan_2.0.1_amd64.deb
-    dpkg -i rustscan_2.0.1_amd64.deb
-    rm rustscan_2.0.1_amd64.deb
-    printf "\n${BGreen}[+] Done\n"
-}
 # installing Nmap
 function installNmap(){
     printf "\n${BYellow}[-] Installing Nmap..............\n"
@@ -160,7 +151,6 @@ CreatingFolder
 installGithub
 installGo
 installNmap
-installRustScan
 installHttprobe
 installSubjs
 installSubjack

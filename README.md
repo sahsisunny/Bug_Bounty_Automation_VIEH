@@ -50,7 +50,6 @@ The raw and cleaned dataset is uploaded in the ``` ./Data/``` folder and you can
 - [lc - subjs](https://github.com/lc/subjs)
 - [haccer - subjack](https://github.com/haccer/subjack)
 - [tomnomnom - httprobe](https://github.com/tomnomnom/httprobe)
-- [RustScan - RustScan](https://github.com/RustScan/RustScan)
 - [nmap - nmap](https://github.com/nmap/nmap)
 - [OJ - gobuster](https://github.com/OJ/gobuster)
 
