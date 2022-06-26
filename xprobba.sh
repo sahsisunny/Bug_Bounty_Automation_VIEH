@@ -114,7 +114,7 @@ function DirFuzzing(){
             mkdir dir_fuzzing
         fi
 
-        gobuster dir -u $line -w ~/tools/wordlist/wordlist.txt -b 404,301 -t  -o dir_fuzzing/$(echo $line | sed 's/https\?:\/\///').txt
+        gobuster dir -u $line -w ~/tools/wordlist/wordlist.txt -b 404,301 -t 20 -o dir_fuzzing/$(echo $line | sed 's/https\?:\/\///')
         $i=$i+1
     done < aliveSubdomains.txt
 
@@ -151,8 +151,9 @@ function listingFiles(){
 
 # Directoru Fuzzing output
 function outputDirFuzz(){
-    if [ ! -d "dir_fuzzing" ];then
+    if [ ! -d /$url/dir_fuzzing ];then
         outDirFuzz
+
     fi
 }
 # Directoru Fuzzing output
@@ -162,9 +163,9 @@ function outDirFuzz(){
     printf "║============================================================╝\n"
 
     cd dir_fuzzing
-    ls -l | awk '{ print $9 }' > temp.txt
-    tail -n +2 temp.txt > tmp.txt && mv tmp.txt temp.txt
-    lnum=`wc -l < temp.txt`
+    ls -l | awk '{ print $9 }' > .temp.txt
+    tail -n +2 .temp.txt > tmp.txt && mv tmp.txt .temp.txt
+    lnum=`wc -l < .temp.txt`
     i=1
 
     while read -r line || i<=$lnum
@@ -172,9 +173,9 @@ function outDirFuzz(){
         printf "║====== ${Color_Off} $i. ${line}.txt ${BGreen}\n"
         i=$(( i + 1 ))
 
-    done < temp.txt
+    done < .temp.txt
 
-    rm temp.txt
+    rm .temp.txt
 
     printf "╚============================================================+\n"
 }
@@ -187,6 +188,7 @@ function needDirFuzzing(){
     elif [ $ans == "no" ] || [ $ans == "No" ] || [ $ans == "n" ] || [ $ans == "N" ] || [ $ans == "NO" ]
     then
         needOutput
+        exit 0
     else
         echo "Please enter valid answer!!"
     fi
@@ -203,6 +205,7 @@ function needOutput(){
         clear
         banner
         listingFiles
+        outputDirFuzz
     else
         echo "Please enter valid answer!!"
     fi
