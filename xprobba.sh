@@ -11,7 +11,7 @@ Color_Off='\033[0m'       # Text Reset
 # printf "\n${Color_Off}"
 
 function banner(){
-    printf "\n${BYellow}"
+	printf "\n${BYellow}"
     printf "            B U G  B O U N T Y  A U T O M A T I O N\n"
     printf "           +----------------------------------------+\n"
     printf "${Blue} ██${White}╗  ${Blue}██${White}╗${Blue}██████${White}╗ ${Blue}██████${White}╗  ${Blue}██████${White}╗    ${Red} ██████${White}╗ ${Red}██████${White}╗  ${Red}█████${White}╗  \n"
@@ -23,12 +23,17 @@ function banner(){
     printf "${BYellow}"
     printf "+------------------------------------------------------------+\n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	printf " Version - 0.1.1                              By:- @SahsiSunny\n"
     printf "+------------------------------------------------------------+\n"       
 =======
     printf " Version - 1.0.1                              By:- @SahsiSunny\n"
     printf "+------------------------------------------------------------+\n"
 >>>>>>> parent of 37b96c8 (Update xprobba.sh)
+=======
+	printf " Version - 0.1.1                              By:- @SahsiSunny\n"
+    printf "+------------------------------------------------------------+\n"       
+>>>>>>> parent of b66ef2d (Update xprobba.sh)
 }
 
 # Creating Folder
@@ -37,7 +42,7 @@ url=$1
 
 if [ ! -d "$url" ];then
     printf "\n${BGreen} Creating `$url` named folder.............."
-    mkdir $url
+	mkdir $url
     printf "\n${BGreen}[+] Done\n"
 fi
 
@@ -45,26 +50,26 @@ cd $url
 
 # Nmap Scanning MainDomain
 function ScanNmap(){
-    
+
     printf "\n${BYellow}[-] Aggressive Scanning through Nmap..............\n"
     printf "${Color_Off}"
-    nmap -A $url > NmapScan_$url.txt
+    nmap -A $url > NmapScan_$url.txt 
     printf "\n${BGreen}[+] Done\n"
 }
 
 # Scanning Subdomain
 function scanningSubdomains(){
-    
+
     printf "\n${BYellow}[-] Scanning Subdomains through Sublist3r..............\n"
     printf "${Color_Off}"
     python3 ~/tools/subwalker/tools/Sublist3r/sublist3r.py -d $url -o Subdomains.txt
     printf "\n${BGreen}[+] Done\n"
-    
+
     printf "\n${BYellow}[-] Scanning Subdomains through assetfinder..............\n"
     printf "${Color_Off}"
     ~/tools/subwalker/tools/assetfinder/assetfinder -subs-only $url >> Subdomains.txt
     printf "\n${BGreen}[+] Done\n"
-    
+
 }
 
 # Filtering and Sorting Subdomains
@@ -73,7 +78,7 @@ function FilteringSubdomains(){
     printf "${Color_Off}"
     cat Subdomains.txt | sort | uniq > SubdomainsSorted.txt
     printf "\n${BGreen}[+] Done\n"
-    
+
 }
 
 # Gathering Whois information
@@ -82,14 +87,14 @@ function gatherWhois(){
     printf "${Color_Off}"
     whois $url > Whois_$url.com
     printf "\n${BGreen}[+] Done\n"
-    
+
 }
 
 # Checking probe for working http and https servers.
 function CheckLive(){
     printf "\n${BYellow}[-] Checking probe for working http/https servers...............\n"
     printf "${Color_Off}"
-    cat SubdomainsSorted.txt | httprobe > aliveSubdomains.txt
+    cat SubdomainsSorted.txt | httprobe > aliveSubdomains.txt 
     printf "\n${BGreen}[+] Done\n"
 }
 
@@ -118,18 +123,18 @@ function DirFuzzing(){
         if [ ! -d "dir_fuzzing" ];then
             mkdir dir_fuzzing
         fi
-        
-        gobuster dir -u $line -w ~/tools/wordlist/wordlist.txt -b 404,301 -t  -o dir_fuzzing/$(echo $line | sed 's/https\?:\/\///').txt
+
+        gobuster dir -u $line -w ~/tools/wordlist/wordlist.txt -o dir_fuzzing/$(echo $line | sed 's/https\?:\/\///')
         $i=$i+1
     done < aliveSubdomains.txt
-    
+
     printf "\n${BGreen}[+] Done\n"
-    
+
 }
 
 # Listing Files - Output
 function listingFiles(){
-    
+
     nmp=`ls NmapScan_$url.txt`
     subdo=`ls Subdomains.txt`
     sortedsub=`ls SubdomainsSorted.txt`
@@ -138,7 +143,7 @@ function listingFiles(){
     jsalivsub=`ls JsAliveSubdomains.txt`
     takesub=`ls DomainsTakeover.txt`
     
-    
+
     printf "${BGreen}\n"
     printf "╔============================================================╗\n"
     printf "║=======================Output Files=========================║\n"
@@ -154,21 +159,27 @@ function listingFiles(){
     printf "║===============Directory Fuzzing Output Files===============║\n"
     printf "║============================================================╝\n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
     
 >>>>>>> parent of 37b96c8 (Update xprobba.sh)
+=======
+
+
+>>>>>>> parent of b66ef2d (Update xprobba.sh)
     cd dir_fuzzing
     ls -l | awk '{ print $9 }' > temp.txt
     tail -n +2 temp.txt > tmp.txt && mv tmp.txt temp.txt
     lnum=`wc -l < temp.txt`
     i=1
-    
+
     while read -r line || i<=$lnum
     do
         printf "║====== ${Color_Off} $i. ${line}.txt ${BGreen}\n"
         i=$(( i + 1 ))
+<<<<<<< HEAD
         
     done < temp.txt
     
@@ -176,11 +187,20 @@ function listingFiles(){
     
     printf "╚============================================================+\n"
 
+=======
+
+    done < temp.txt
+
+    rm temp.txt
+
+    printf "╚============================================================+\n"
+
+>>>>>>> parent of b66ef2d (Update xprobba.sh)
 }
 
 # For Output Questions
 function needOutput(){
-    read -p "Do you want to open output in GUI Mode?(Yes/No): " ans
+    read -p "Do you want to open output in GUI Mode?(Yes/No): " ans 
     if [ $ans == "yes" ] || [ $ans == "Yes" ] || [ $ans == "y" ] || [ $ans == "Y" ] || [ $ans == "YES" ]
     then
         xdg-open ./
