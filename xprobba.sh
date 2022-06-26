@@ -145,10 +145,21 @@ function listingFiles(){
     printf "║====== ${Color_Off} 5. ${alivesub} ${BGreen}\n"
     printf "║====== ${Color_Off} 6. ${jsalivsub} ${BGreen}\n"
     printf "║====== ${Color_Off} 7. ${takesub} ${BGreen}\n"
+    printf "║============================================================╝\n"
+}
+
+
+# Directoru Fuzzing output
+function outputDirFuzz(){
+    if [ ! -d "dir_fuzzing" ];then
+        outDirFuzz
+    fi
+}
+# Directoru Fuzzing output
+function outDirFuzz(){
     printf "║============================================================╗\n"
     printf "║===============Directory Fuzzing Output Files===============║\n"
     printf "║============================================================╝\n"
-
 
     cd dir_fuzzing
     ls -l | awk '{ print $9 }' > temp.txt
@@ -166,7 +177,19 @@ function listingFiles(){
     rm temp.txt
 
     printf "╚============================================================+\n"
-
+}
+# For need directory fuzzing
+function needDirFuzzing(){
+    read -p "Do you want scanning the directory of subdomains (it takes a lot of time)?(Yes/No): " ans 
+    if [ $ans == "yes" ] || [ $ans == "Yes" ] || [ $ans == "y" ] || [ $ans == "Y" ] || [ $ans == "YES" ]
+    then
+        DirFuzzing
+    elif [ $ans == "no" ] || [ $ans == "No" ] || [ $ans == "n" ] || [ $ans == "N" ] || [ $ans == "NO" ]
+    then
+        needOutput
+    else
+        echo "Please enter valid answer!!"
+    fi
 }
 
 # For Output Questions
@@ -195,5 +218,5 @@ FilteringSubdomains
 CheckLive
 testLive
 checkTakeover
-DirFuzzing
+needDirFuzzing
 needOutput
