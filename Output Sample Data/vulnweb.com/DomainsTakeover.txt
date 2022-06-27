@@ -1,0 +1,14 @@
+[Not Vulnerable] http://vulnweb.com
+[Not Vulnerable] http://vulnweb.com
+[Not Vulnerable] http://rest.vulnweb.com
+[Not Vulnerable] http://rest.vulnweb.com
+[Not Vulnerable] http://testphp.vulnweb.com
+[Not Vulnerable] http://testphp.vulnweb.com
+[Not Vulnerable] http://testhtml5.vulnweb.com
+[Not Vulnerable] http://testhtml5.vulnweb.com
+[Not Vulnerable] http://testasp.vulnweb.com
+[Not Vulnerable] http://testasp.vulnweb.com
+[Not Vulnerable] http://testaspnet.vulnweb.com
+[Not Vulnerable] http://testaspnet.vulnweb.com
+[Not Vulnerable] http://www.vulnweb.com
+[Not Vulnerable] http://www.vulnweb.com

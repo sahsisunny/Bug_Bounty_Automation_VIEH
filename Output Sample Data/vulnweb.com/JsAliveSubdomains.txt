@@ -1,0 +1,9 @@
+http://code.jquery.com/jquery-1.9.1.min.js
+http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js
+http://testhtml5.vulnweb.com/static/app/app.js
+http://testhtml5.vulnweb.com/static/app/libs/sessvars.js
+http://testhtml5.vulnweb.com/static/app/post.js
+http://testhtml5.vulnweb.com/static/app/controllers/controllers.js
+http://testhtml5.vulnweb.com/static/app/services/itemsService.js
+http://bxss.s3.amazonaws.com/ad.js
